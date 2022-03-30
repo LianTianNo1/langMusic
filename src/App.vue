@@ -74,8 +74,9 @@ export default {
   position: relative;
   top: 0;
   left: 0;
+  z-index: 99;
   right: 0;
-  box-shadow: 0px 1px 4px #0000004d;
+  box-shadow: 0px 1px 5px #0000002b;
 }
 
 .bottom {

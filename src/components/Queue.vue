@@ -35,21 +35,24 @@
                 <div class="queue-song-singer">
                   <span
                     v-for="(singer, i) in item.artistInfo"
-                    :key="i"
+                    :key="i + Math.random()"
                     @click.stop="toArtist(singer.id)"
                     >{{ singer.name }}
                   </span>
                 </div>
 
                 <span class="queue-song-duration">{{ item.duration }}</span>
-                <span class="queue-song-delete" @click="deleteQueue(item.id)">×</span>
+                <span class="queue-song-delete" @click="deleteQueue(item.id)"
+                  >×</span
+                >
               </li>
             </el-scrollbar>
           </ul>
         </el-tab-pane>
-        <!-- <el-tab-pane label="播放历史" name="history">播放历史</el-tab-pane> -->
       </el-tabs>
-      <span v-if="!musicQueue.length" class="queue-tip">什么都没有~快去听歌吧</span>
+      <span v-if="!musicQueue.length" class="queue-tip"
+        >什么都没有~快去听歌吧</span
+      >
     </div>
   </div>
 </template>

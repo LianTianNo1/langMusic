@@ -17,17 +17,10 @@
       >
       </el-input>
     </div>
-    <div
-      class="search-hot"
-      v-show="showHot"
-      ref="hot"
-      @mousedown.stop="prevent"
-    >
+    <div class="search-hot" v-show="showHot" ref="hot" @mousedown.stop="prevent">
       <el-scrollbar style="height: 100%">
         <div class="history" v-if="history.length">
-          <span
-            class="hot-title"
-            style="display: inline-block; margin-right: 5px"
+          <span class="hot-title" style="display: inline-block; margin-right: 5px"
             >搜索历史</span
           >
           <span
@@ -40,7 +33,7 @@
             <div
               class="history-item"
               v-for="(item, index) in history"
-              :key="index"
+              :key="index + Math.random()"
               @mousedown="toHot(item)"
             >
               {{ item }}
@@ -59,7 +52,7 @@
           <li
             class="hot-item"
             v-for="(item, index) in hotData"
-            :key="index"
+            :key="index + Math.random()"
             @mousedown.prevent="toHot(item.searchWord)"
           >
             <div class="hot-index">{{ index + 1 }}</div>
@@ -188,7 +181,7 @@ export default {
 
 .input-box input {
   border-radius: 20px;
-  background-color: rgb(92 147 216 / 69%);
+  background-color: #fff;
   border: none;
   outline: none;
   font-size: 12px;

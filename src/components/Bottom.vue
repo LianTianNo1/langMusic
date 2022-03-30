@@ -16,7 +16,7 @@
         }}</span>
 
         <div class="music-singer">
-          <span v-for="(singer, i) in globalMusicInfo.artistInfo" :key="i + 99"
+          <span v-for="(singer, i) in globalMusicInfo.artistInfo" :key="i + Math.random()"
             >{{ singer.name }}
           </span>
         </div>

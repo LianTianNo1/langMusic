@@ -50,9 +50,9 @@ export default {
 .index-left {
   width: 200px;
   min-width: 200px;
-  /* background-color: #ededed; */
+  background-color: #ffffff4a;
   text-align: center;
-  border-right: 1px solid #ededed;
+  box-shadow: 1px 0px 9px #00000052;
 }
 
 .index-left ul {

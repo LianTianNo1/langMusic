@@ -54,13 +54,21 @@
       </el-tab-pane>
       <el-tab-pane label="歌手详情" name="detail">
         <span class="detail-title">个人简介</span>
-        <p class="detail-words" v-for="(y, index3) in briefDescList" :key="index3">
+        <p
+          class="detail-words"
+          v-for="(y, index3) in briefDescList"
+          :key="index3"
+        >
           {{ y }}
         </p>
 
         <div v-for="(item, index4) in introduction" :key="index4 + 999">
           <span class="detail-title">{{ item.ti }}</span>
-          <p class="detail-words" v-for="(x, i) in item.strList" :key="i">
+          <p
+            class="detail-words"
+            v-for="(x, i) in item.strList"
+            :key="i + Math.random()"
+          >
             {{ x }}
           </p>
         </div>
@@ -70,7 +78,7 @@
           <li
             class="simi-item"
             v-for="(item, index) in simi"
-            :key="index"
+            :key="index + Math.random()"
             @click="toArtist(item.id)"
           >
             <div class="simi-img-wrap">

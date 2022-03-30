@@ -8,7 +8,11 @@
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane label="歌曲" name="first">
           <div class="songs-table">
-            <el-table :data="songsList" stripe style="width: 100%" @row-dblclick="play">
+            <el-table
+              :data="songsList"
+              style="width: 100%"
+              @row-dblclick="play"
+            >
               <el-table-column type="index" width="50"></el-table-column>
 
               <el-table-column prop="songName" label="音乐标题" width="">
@@ -31,8 +35,12 @@
                 <template slot-scope="scope">
                   <div
                     v-for="(x, i) in scope.row.artistInfo"
-                    :key="i"
-                    style="cursor: pointer; color: #2980b9; display: inline-block"
+                    :key="i + Math.random()"
+                    style="
+                      cursor: pointer;
+                      color: #2980b9;
+                      display: inline-block;
+                    "
                     @click="toArtist(x.id)"
                   >
                     {{ x.name
@@ -64,7 +72,11 @@
                 </template>
               </el-table-column>
 
-              <el-table-column prop="duration" label="时长" width="100"></el-table-column>
+              <el-table-column
+                prop="duration"
+                label="时长"
+                width="100"
+              ></el-table-column>
             </el-table>
           </div>
         </el-tab-pane>
@@ -76,7 +88,7 @@
                 <li
                   class="iconfont icon-play"
                   v-for="(item, index) in playList"
-                  :key="index"
+                  :key="index + Math.random()"
                   @click="toPlaylistDetail(item.id)"
                 >
                   <p class="first-p">播放量：{{ item.playCount }}</p>
@@ -90,7 +102,11 @@
 
         <el-tab-pane label="MV" name="third">
           <ul class="mv-list1">
-            <li v-for="(item, index) in mvList" :key="index" @click="toMvDetail(item.id)">
+            <li
+              v-for="(item, index) in mvList"
+              :key="index + Math.random()"
+              @click="toMvDetail(item.id)"
+            >
               <div class="mv-img-wrap">
                 <img v-lazy="item.cover" alt="newMvs" />
                 <p class="iconfont icon-play play"></p>
@@ -121,7 +137,11 @@
       </el-pagination>
     </div>
 
-    <div class="add-ball iconfont icon-yinfu" v-show="showAddBall" ref="addBall"></div>
+    <div
+      class="add-ball iconfont icon-yinfu"
+      v-show="showAddBall"
+      ref="addBall"
+    ></div>
   </div>
 </template>
 
@@ -467,8 +487,11 @@ ul {
 .el-pagination.is-background .btn-prev,
 .el-pagination.is-background .el-pager li {
   background: none;
-  border-radius: 5px;
+  border-radius: 10px !important;
   border: 1px solid #f4f4f5;
+  margin: 0 5px;
+  color: #606266;
+  min-width: 30px;
 }
 
 .el-pagination.is-background .el-pager li:not(.disabled):not(.active):hover {
@@ -504,16 +527,14 @@ ul {
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
   font-size: 12px;
-  padding: 5px;
+  padding: 1rem;
   box-sizing: border-box;
-  /* border-top-left-radius: 10px;
-      border-top-right-radius: 10px; */
   transform: translateY(-100%);
   transition: 0.5s;
 }
 
 .list li::before {
-  content: "\e665";
+  content: '\e665';
   position: absolute;
   bottom: 25px;
   right: 5px;
@@ -581,7 +602,7 @@ ul {
 }
 
 .mv-img-wrap .play::before {
-  content: "\e665";
+  content: '\e665';
   position: absolute;
   top: 50%;
   left: 50%;

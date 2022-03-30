@@ -2,7 +2,7 @@
   <div class="discover" v-loading="loading">
     <div class="Carousel">
       <el-carousel :interval="3000" type="card" height="250px">
-        <el-carousel-item v-for="(item, index) in banners" :key="index">
+        <el-carousel-item v-for="(item, index) in banners" :key="index + Math.random()">
           <img
             class="item-img"
             :src="item.imageUrl"
@@ -20,7 +20,7 @@
           <li
             class="iconfont icon-play"
             v-for="(item, index) in recommendList"
-            :key="index"
+            :key="index + Math.random()"
             @click="toPlaylistDetail(item.id)"
           >
             <p class="first-p">{{ item.copywriter }}</p>
@@ -33,7 +33,7 @@
     <div class="songs-wrap">
       <h4>最新音乐</h4>
       <ul class="new-songs">
-        <li v-for="(item, index) in newSongs" :key="index">
+        <li v-for="(item, index) in newSongs" :key="index + Math.random()">
           <div class="music-img-wrap">
             <img v-lazy="item.picUrl" alt="newSongs" />
             <p class="iconfont icon-play" @click="playMusic(item)"></p>
@@ -44,7 +44,7 @@
             <p
               class="music-singer"
               v-for="(singer, i) in item.song.artists"
-              :key="i"
+              :key="i + Math.random()"
               style="display: inline; margin: 0 5px"
             >
               {{ singer.name }}
@@ -58,7 +58,7 @@
       <ul class="mv-list">
         <li
           v-for="(item, index) in newMvs"
-          :key="index"
+          :key="index + Math.random()"
           @click="toMvDetail(item.id)"
         >
           <div class="mv-img-wrap">
@@ -127,7 +127,9 @@ export default {
       // console.log(res)
       this.newMvs = res.data.result;
       for (let i = 0; i < this.newMvs.length; i++) {
-        if (this.newMvs[i].playCount >= 100000) { this.newMvs[i].playCount = parseInt(this.newMvs[i].playCount / 10000) + "万"; }
+        if (this.newMvs[i].playCount >= 100000) {
+          this.newMvs[i].playCount = parseInt(this.newMvs[i].playCount / 10000) + "万";
+        }
       }
     });
   },
@@ -249,7 +251,8 @@ ul {
   width: 18%;
   margin: 10px 0;
   position: relative;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
+  overflow: hidden;
 }
 
 .list li .first-p {
@@ -260,16 +263,14 @@ ul {
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
   font-size: 12px;
-  padding: 5px;
+  padding: 1rem;
   box-sizing: border-box;
-  /* border-top-left-radius: 10px;
-      border-top-right-radius: 10px; */
   transform: translateY(-100%);
   transition: 0.5s;
 }
 
 .list li::before {
-  content: '\e665';
+  content: "\e665";
   position: absolute;
   bottom: 25px;
   right: 5px;
@@ -290,7 +291,9 @@ ul {
 .list li:hover .first-p {
   transform: translateY(0);
 }
-
+.list li:hover img {
+  transform: scale(1.1);
+}
 .list li:hover::before {
   opacity: 1;
 }
@@ -298,6 +301,7 @@ ul {
 .songs-wrap ul img {
   width: 100%;
   border-radius: 5px;
+  transition: transform 0.4s ease-out;
   /* opacity: 1; */
 }
 
@@ -343,7 +347,7 @@ ul {
 }
 
 .music-img-wrap p::before {
-  content: '\e665';
+  content: "\e665";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -395,7 +399,7 @@ ul {
 }
 
 .mv-img-wrap .play::before {
-  content: '\e665';
+  content: "\e665";
   position: absolute;
   top: 50%;
   left: 50%;

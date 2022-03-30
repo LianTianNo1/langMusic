@@ -37,7 +37,7 @@
             <span
               class="song-info"
               v-for="(singer, i) in globalMusicInfo.artistInfo"
-              :key="i"
+              :key="i + Math.random()"
               >{{ singer.name }}
             </span>
           </div>
@@ -45,7 +45,7 @@
             <el-scrollbar style="height: 100%" v-if="hasLyric" ref="scroll">
               <p
                 v-for="(item, index) in lyric"
-                :key="index"
+                :key="index + Math.random()"
                 :class="{ 'active-lyric': currentIndex === index }"
               >
                 {{ item.lyricWords }}
@@ -56,14 +56,13 @@
         </div>
       </div>
       <!-- <ul style="display:flex">
-                <li v-for="(item,index) in colors" :key="index" :style="`backgroundColor:rgb(${item[0]},${item[1]},${item[2]})`">{{item}}</li>
+                <li v-for="(item,index) in colors" :key="index + Math.random()" :style="`backgroundColor:rgb(${item[0]},${item[1]},${item[2]})`">{{item}}</li>
             </ul> -->
     </div>
   </transition>
 </template>
 
 <script>
-import ColorThief from "colorthief";
 import { lyricAPI } from "@/utils/api";
 
 export default {
@@ -87,14 +86,7 @@ export default {
     getColor() {
       const img = this.$refs.cover;
 
-      img.addEventListener("load", () => {
-        const colorthief = new ColorThief();
-        this.colors = colorthief.getPalette(img, 2);
-        // console.dir(this.colors)
-        this.$refs.bg.style.background = `linear-gradient(to right bottom, 
-                                                rgb(${this.colors[0][0]},${this.colors[0][1]},${this.colors[0][2]}), 
-                                                rgb(${this.colors[1][0]},${this.colors[1][1]},${this.colors[1][2]}))`;
-      });
+      img.addEventListener("load", () => {});
     },
     getLyric(id) {
       lyricAPI({ id }).then((res) => {
@@ -104,9 +96,6 @@ export default {
         this.$nextTick(() => {
           _this.getColor();
         });
-        // setTimeout(() => {
-        //  this.getColor()
-        // }, 0);
 
         if (!Object.hasOwnProperty.call(res.data, "lrc")) {
           _this.hasLyric = false;
@@ -124,7 +113,6 @@ export default {
 
             // 截取歌词,正则表达式去除[]及其包括的内容
             const lyricWords = item.replace(/\[.*?\]/g, "");
-            // let lyricWords = item.slice(end+1).trim()
             if (lyricWords) {
               lyric.push({
                 currentTime,
@@ -146,12 +134,6 @@ export default {
     lryicActive(time) {
       for (let i = 0; i < this.lyric.length; i++) {
         if (this.lyric[i].currentTime == Math.ceil(time)) {
-          // console.log(`第${i}句，时间为${this.lyric[i].currentTime},${this.lyric[i].lyricWords}`)
-
-          // let _view = document.querySelector(".lyric-wrap .el-scrollbar__view")
-          // let top = parseInt(window.getComputedStyle(_view).top)
-          // _view.style.transform = `translate3d(0,${80 - i * 73}px,0)` //还是会存在bug，歌词会自动滚动，滚动条不会，导致无法上拉显示已经放过的歌词。
-
           // 可实现歌词垂直居中
           const _p = document.querySelector(".active-lyric");
           const _pOffsetTop = _p.offsetTop;
@@ -200,20 +182,11 @@ ul {
 .lyric-wrap .el-scrollbar__view {
   position: relative;
   padding: 100px 0 300px 0;
-
-  /* 已设置滚动条滚动到自定义位置，下方效果取消 */
-  /* transform: translate3d(0,80px,0);
-        transition: .6s ease-out; */
 }
 
 .song-detail {
   width: 100%;
   height: calc(100% - 70px);
-
-  /* 歌词界面全屏 */
-  /* height: 100%;
-        z-index: 1; */
-
   position: fixed;
   top: 0%;
   color: #fff;

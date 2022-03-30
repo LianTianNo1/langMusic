@@ -45,8 +45,8 @@
           #5dc8ff 25%,
           transparent 25%,
           transparent 50%,
-          #ff5d8f 50%,
-          #ff5d8f 75%,
+          #f377a4 50%,
+          #f377a4 75%,
           transparent 75%,
           transparent
         );
@@ -76,45 +76,41 @@
         td.el-table__cell {
         background: #ffffff7a !important;
       }
-
-      .el-table--fit {
-        /* background-image: linear-gradient(
-          25deg,
-          #e76e7d7d,
-          #c996a269,
-          #99b8c963,
-          #5dafecb5
-        ) !important; */
-      }
-
       .el-tabs__content {
         position: relative;
         border-radius: 10px;
         overflow: auto !important;
         box-shadow: 1px 2px 5px #8f8e8e87;
       }
-
-      .el-pagination.is-background .el-pager li:not(.disabled).active {
-        background-color: #f15dc4 !important;
+      .el-pagination.is-background .btn-next,
+      .el-pagination.is-background .btn-prev,
+      .el-pagination.is-background .el-pager li {
+        border-radius: 10px !important;
       }
-
+      .el-pagination.is-background .el-pager li:not(.disabled).active {
+        background-color: #f377a4 !important;
+      }
+      .el-tabs__active-bar {
+        background-color: #f377a4 !important;
+      }
       .el-table th,
       .el-table tr {
         background-color: transparent !important;
       }
-
-      .el-pagination.is-background .btn-next,
-      .el-pagination.is-background .btn-prev,
-      .el-pagination.is-background .el-pager li {
-        margin: 0 5px;
-        background-color: #f4f4f5;
-        color: #606266;
-        min-width: 30px;
-        border-radius: 10px !important;
+      .el-tabs__item:hover,
+      .el-tabs__item.is-active {
+        color: #f377a4 !important;
+        font-weight: 600;
+      }
+      .el-input__icon {
+        color: #f377a4 !important;
       }
       .el-table,
       .el-table__expanded-cell {
         background-color: #ffffff69 !important;
+      }
+      .el-slider__runway {
+        box-shadow: 1px 1px 3px #0000003b;
       }
     </style>
   </head>

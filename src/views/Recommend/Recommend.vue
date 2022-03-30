@@ -19,7 +19,7 @@
           <li
             :class="item == tabActive ? 'tab-item active' : 'tab-item'"
             v-for="(item, index) in tabItems"
-            :key="index"
+            :key="index + Math.random()"
             @click="changeActive(item)"
           >
             {{ item }}
@@ -33,7 +33,7 @@
               <li
                 class="iconfont icon-play"
                 v-for="(item, index) in songLists"
-                :key="index"
+                :key="index + Math.random()"
                 @click="toPlaylistDetail(item.id)"
               >
                 <p class="first-p">播放量 : {{ item.playCount }}</p>
@@ -246,7 +246,7 @@ ul {
 }
 
 .active {
-  color: #009fff;
+  color: #f377a4;
   font-weight: bold;
 }
 
@@ -276,10 +276,8 @@ ul {
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
   font-size: 12px;
-  padding: 5px;
+  padding: 1rem;
   box-sizing: border-box;
-  /* border-top-left-radius: 10px;
-      border-top-right-radius: 10px; */
   transform: translateY(-100%);
   transition: 0.5s;
 }

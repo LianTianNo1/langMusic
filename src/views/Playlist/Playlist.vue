@@ -22,9 +22,12 @@
         <div class="playAllBtn iconfont icon-play" @click="playAll">播放全部</div>
         <div class="playlist-tags">
           <span>标签：</span>
-          <span v-for="(item, index) in playlistInfo.tags" :key="index" class="tags">{{
-            item
-          }}</span>
+          <span
+            v-for="(item, index) in playlistInfo.tags"
+            :key="index + Math.random()"
+            class="tags"
+            >{{ item }}</span
+          >
         </div>
         <div class="playlist-desc">
           <span>简介：</span>
@@ -39,7 +42,6 @@
           <div class="songs-table">
             <el-table
               :data="tableData"
-              stripe
               @row-dblclick="play"
               v-el-table-infinite-scroll="loadMore"
               infinite-scroll-delay="500"
@@ -66,7 +68,7 @@
                 <template slot-scope="scope">
                   <div
                     v-for="(singer, i) in scope.row.ar"
-                    :key="i"
+                    :key="i + Math.random()"
                     style="cursor: pointer; color: #2980b9; display: inline-block"
                     @click="toArtist(singer.id)"
                   >
@@ -109,7 +111,7 @@
           <div class="comment-wrap" v-if="hotComments.length != 0">
             <h4 class="comment-title">最热评论({{ hotComments.length }})</h4>
             <ul>
-              <li v-for="(item, index) in hotComments" :key="index">
+              <li v-for="(item, index) in hotComments" :key="index + Math.random()">
                 <img v-lazy="item.user.avatarUrl" alt="" class="comment-avatar" />
                 <div class="comment-info">
                   <div class="comment">
@@ -138,7 +140,7 @@
               最新评论({{ playlistInfo.commentCount - hotComments.length }})
             </h4>
             <ul>
-              <li v-for="(item, index) in comments" :key="index">
+              <li v-for="(item, index) in comments" :key="index + Math.random()">
                 <img v-lazy="item.user.avatarUrl" alt="" class="comment-avatar" />
                 <div class="comment-info">
                   <div class="comment">
@@ -485,9 +487,11 @@ ul {
 
 .playlist-top-card {
   display: flex;
-  /* height: 300px; */
+  background: #ffffff7d;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 1px 1px 9px #00000033;
 }
-
 .playlist-img-wrap {
   width: 200px;
   height: 200px;
@@ -625,7 +629,7 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #c0392b;
+  color: #f15dc4;
   font-size: 14px;
   cursor: pointer;
 }

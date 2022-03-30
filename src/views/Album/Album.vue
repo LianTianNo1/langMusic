@@ -11,14 +11,10 @@
         </div>
         <div class="playlist-user-info">
           <div class="playlist-user-name">歌手：{{ artistName }}</div>
-          <div class="playlist-user-name">
-            时间：{{ albumInfo.publishTime }}
-          </div>
+          <div class="playlist-user-name">时间：{{ albumInfo.publishTime }}</div>
           <div class="playlist-user-name">共{{ albumInfo.size }}首</div>
         </div>
-        <div class="playAllBtn iconfont icon-play" @click="playAll">
-          播放全部
-        </div>
+        <div class="playAllBtn iconfont icon-play" @click="playAll">播放全部</div>
       </div>
     </div>
 
@@ -26,33 +22,23 @@
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane label="歌曲列表" name="first">
           <div class="songs-table">
-            <el-table :data="tableData" stripe @row-dblclick="play">
+            <el-table :data="tableData" @row-dblclick="play">
               <el-table-column type="index" width="50"></el-table-column>
 
-              <el-table-column
-                prop="name"
-                label="音乐标题"
-                width=""
-              ></el-table-column>
+              <el-table-column prop="name" label="音乐标题" width=""></el-table-column>
 
               <el-table-column prop="artistInfo" label="歌手" width="">
                 <template slot-scope="scope">
                   <div
                     v-for="(singer, i) in scope.row.ar"
-                    :key="i"
-                    style="
-                      cursor: pointer;
-                      color: #2980b9;
-                      display: inline-block;
-                    "
+                    :key="i + Math.random()"
+                    style="cursor: pointer; color: #2980b9; display: inline-block"
                     @click="toArtist(singer.id)"
                   >
                     {{ singer.name
                     }}<span
                       style="color: #606266; margin: 0 5px"
-                      v-show="
-                        scope.row.ar.length != 1 && i != scope.row.ar.length - 1
-                      "
+                      v-show="scope.row.ar.length != 1 && i != scope.row.ar.length - 1"
                       >/</span
                     >
                   </div>
@@ -75,11 +61,7 @@
                 </template>
               </el-table-column>
 
-              <el-table-column
-                prop="dt"
-                label="时长"
-                width="100"
-              ></el-table-column>
+              <el-table-column prop="dt" label="时长" width="100"></el-table-column>
             </el-table>
           </div>
         </el-tab-pane>
@@ -87,12 +69,8 @@
           <div class="comment-wrap" v-if="hotComments.length != 0">
             <h4 class="comment-title">最热评论({{ hotComments.length }})</h4>
             <ul>
-              <li v-for="(item, index) in hotComments" :key="index">
-                <img
-                  v-lazy="item.user.avatarUrl"
-                  alt=""
-                  class="comment-avatar"
-                />
+              <li v-for="(item, index) in hotComments" :key="index + Math.random()">
+                <img v-lazy="item.user.avatarUrl" alt="" class="comment-avatar" />
                 <div class="comment-info">
                   <div class="comment">
                     <span class="comment-user">{{ item.user.nickname }}:</span>
@@ -102,9 +80,7 @@
                     <span class="comment-user"
                       >@{{ item.beReplied[0].user.nickname }}:</span
                     >
-                    <span class="comment-content">{{
-                      item.beReplied[0].content
-                    }}</span>
+                    <span class="comment-content">{{ item.beReplied[0].content }}</span>
                   </div>
                   <div class="comment-bottom">
                     <p class="comment-time">{{ item.time }}</p>
@@ -122,12 +98,8 @@
               最新评论({{ commentCount - hotComments.length }})
             </h4>
             <ul>
-              <li v-for="(item, index) in comments" :key="index">
-                <img
-                  v-lazy="item.user.avatarUrl"
-                  alt=""
-                  class="comment-avatar"
-                />
+              <li v-for="(item, index) in comments" :key="index + Math.random()">
+                <img v-lazy="item.user.avatarUrl" alt="" class="comment-avatar" />
                 <div class="comment-info">
                   <div class="comment">
                     <span class="comment-user">{{ item.user.nickname }}:</span>
@@ -137,9 +109,7 @@
                     <span class="comment-user"
                       >@{{ item.beReplied[0].user.nickname }}:</span
                     >
-                    <span class="comment-content">{{
-                      item.beReplied[0].content
-                    }}</span>
+                    <span class="comment-content">{{ item.beReplied[0].content }}</span>
                   </div>
                   <div class="comment-bottom">
                     <p class="comment-time">{{ item.time }}</p>
@@ -165,17 +135,17 @@
         </el-tab-pane>
         <el-tab-pane label="专辑详情" name="third">
           <span class="tt">专辑介绍</span>
-          <p v-for="(item, index) in albumDescList" :key="index" class="dd">
+          <p
+            v-for="(item, index) in albumDescList"
+            :key="index + Math.random()"
+            class="dd"
+          >
             {{ item }}
           </p>
         </el-tab-pane>
       </el-tabs>
     </div>
-    <div
-      class="add-ball iconfont icon-yinfu"
-      v-show="showAddBall"
-      ref="addBall"
-    ></div>
+    <div class="add-ball iconfont icon-yinfu" v-show="showAddBall" ref="addBall"></div>
   </div>
 </template>
 
@@ -431,12 +401,13 @@ ul {
   margin: 0 auto;
   padding: 20px;
 }
-
 .playlist-top-card {
   display: flex;
-  /* height: 300px; */
+  background: #ffffff7d;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 1px 1px 9px #00000033;
 }
-
 .playlist-img-wrap {
   width: 200px;
   height: 200px;
@@ -524,7 +495,7 @@ ul {
 }
 
 .playlist-tags .tags:not(:last-of-type)::after {
-  content: '/';
+  content: "/";
   margin: 0 4px;
 }
 
@@ -569,7 +540,7 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #c0392b;
+  color: #f15dc4;
   font-size: 14px;
   cursor: pointer;
 }

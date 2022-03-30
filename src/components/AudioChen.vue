@@ -231,11 +231,11 @@ export default {
 }
 
 .el-slider__bar {
-  background-color: #f15dc4 !important;
+  background-color: #f377a4 !important;
 }
 
 .el-slider__button {
-  border-color: #f15dc4 !important;
+  border-color: #f377a4 !important;
   width: 8px !important;
   height: 8px !important;
 }

@@ -22,7 +22,7 @@
       <div class="mv-content-wrap" v-if="hotComments.length != 0">
         <h4 class="head">热门评论({{ hotComments.length }})</h4>
         <ul>
-          <li v-for="(item, index) in hotComments" :key="index">
+          <li v-for="(item, index) in hotComments" :key="index + Math.random()">
             <img v-lazy="item.user.avatarUrl" alt="" class="comment-avatar" />
             <div class="comment-info">
               <div class="comment">
@@ -47,7 +47,7 @@
       <div class="mv-content-wrap" v-loading="loadingComments">
         <h4 class="head">最新评论({{ this.total }})</h4>
         <ul>
-          <li v-for="(item, index) in comments" :key="index">
+          <li v-for="(item, index) in comments" :key="index + Math.random()">
             <img v-lazy="item.user.avatarUrl" alt="" class="comment-avatar" />
             <div class="comment-info">
               <div class="comment">
@@ -83,7 +83,7 @@
     <div class="mv-recommend-wrap">
       <h4 class="head">相关推荐</h4>
       <ul class="mv-list">
-        <li v-for="(item, index) in recommendMvs" :key="index">
+        <li v-for="(item, index) in recommendMvs" :key="index + Math.random()">
           <div class="mv-img-wrap" @click="toMvDetail(item.id)">
             <img :src="item.cover" alt="newMvs" />
             <p class="iconfont icon-play play"></p>
@@ -251,6 +251,14 @@ ul {
   margin-bottom: 20px;
 }
 
+.mv-info,
+.mv-content-wrap {
+  background: #ffffff73;
+  padding: 1rem;
+  box-sizing: content-box;
+  margin: 1rem 0;
+}
+
 .mv-content-wrap .head {
   font-size: 25px;
   font-weight: normal;
@@ -316,9 +324,13 @@ ul {
 .mv-list li {
   display: flex;
   padding: 10px;
+  justify-content: flex-start;
   box-sizing: border-box;
+  transition: background-color 0.3s ease-out;
 }
-
+.mv-list .mv-info {
+  flex-grow: 1;
+}
 .mv-list li:hover {
   background-color: rgb(240, 239, 239);
 }
@@ -331,7 +343,8 @@ ul {
 }
 
 .mv-img-wrap img {
-  height: 100%;
+  /* height: 100%; */
+  width: 100%;
   border-radius: 5px;
 }
 

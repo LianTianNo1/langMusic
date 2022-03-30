@@ -1,7 +1,7 @@
 <template>
   <div class="new-songs" v-loading="loading">
     <div class="songs-table">
-      <el-table :data="tableData" stripe style="width: 100%" @row-dblclick="play">
+      <el-table :data="tableData" style="width: 100%" @row-dblclick="play">
         <el-table-column type="index" width="50"></el-table-column>
 
         <el-table-column width="100">
@@ -19,7 +19,7 @@
           <template slot-scope="scope">
             <div
               v-for="(x, i) in scope.row.artistInfo"
-              :key="i"
+              :key="i + Math.random()"
               style="cursor: pointer; color: #2980b9; display: inline-block"
               @click="toArtist(x.id)"
             >
@@ -77,8 +77,7 @@ export default {
       };
       getNewSongsAPI(params)
         .then((res) => {
-          // console.log(res)
-          const resultList = res.data.data.slice(0, 50);
+          const resultList = res ? res.data.data.slice(0, 50) : [];
           const songsList = [];
           for (const item of resultList) {
             let duration = item.duration;
@@ -92,8 +91,6 @@ export default {
             const song = {
               id: item.id,
               songName: item.name,
-              // singer:item.artists[0].name,
-              // artistId:item.artists[0].id,
               artistInfo: item.artists,
               album: item.album.name,
               albumId: item.album.id,
@@ -215,7 +212,7 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #c0392b;
+  color: #f15dc4;
   font-size: 14px;
   cursor: pointer;
 }

@@ -41,7 +41,9 @@
         <span class="section-name">类型：</span>
         <ul class="section-tabs">
           <li>
-            <span :class="{ active: type == '全部' }" @click="type = '全部'">全部</span>
+            <span :class="{ active: type == '全部' }" @click="type = '全部'"
+              >全部</span
+            >
           </li>
           <li>
             <span :class="{ active: type == '官方版' }" @click="type = '官方版'"
@@ -49,7 +51,9 @@
             >
           </li>
           <li>
-            <span :class="{ active: type == '原声' }" @click="type = '原声'">原声</span>
+            <span :class="{ active: type == '原声' }" @click="type = '原声'"
+              >原声</span
+            >
           </li>
           <li>
             <span :class="{ active: type == '现场版' }" @click="type = '现场版'"
@@ -57,7 +61,9 @@
             >
           </li>
           <li>
-            <span :class="{ active: type == '网易出品' }" @click="type = '网易出品'"
+            <span
+              :class="{ active: type == '网易出品' }"
+              @click="type = '网易出品'"
               >网易出品</span
             >
           </li>
@@ -68,15 +74,21 @@
         <span class="section-name">排序：</span>
         <ul class="section-tabs">
           <li>
-            <span :class="{ active: order == '上升最快' }" @click="order = '上升最快'"
+            <span
+              :class="{ active: order == '上升最快' }"
+              @click="order = '上升最快'"
               >上升最快</span
             >
           </li>
           <li>
-            <span :class="{ active: order == '最热' }" @click="order = '最热'">最热</span>
+            <span :class="{ active: order == '最热' }" @click="order = '最热'"
+              >最热</span
+            >
           </li>
           <li>
-            <span :class="{ active: order == '最新' }" @click="order = '最新'">最新</span>
+            <span :class="{ active: order == '最新' }" @click="order = '最新'"
+              >最新</span
+            >
           </li>
         </ul>
       </div>
@@ -84,7 +96,11 @@
 
     <div class="mv-wrap">
       <ul class="mv-list">
-        <li v-for="(item, index) in mvList" :key="index" @click="toMvDetail(item.id)">
+        <li
+          v-for="(item, index) in mvList"
+          :key="index + Math.random()"
+          @click="toMvDetail(item.id)"
+        >
           <div class="mv-img-wrap">
             <img v-lazy="item.cover" alt="newMvs" />
             <p class="iconfont icon-play play"></p>
@@ -256,7 +272,7 @@ ul {
 }
 
 .mv-img-wrap .play::before {
-  content: "\e665";
+  content: '\e665';
   position: absolute;
   top: 50%;
   left: 50%;

@@ -1,24 +1,14 @@
-# lang-music
+# 小浪音乐
 
-## Project setup
-```
-npm install
-```
+## 前言：
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+自己学习前端的做的 Vue 项目，请勿用作商业用途
 
-### Compiles and minifies for production
-```
-npm run build
-```
+做的不是很好，请大家见谅
 
-### Lints and fixes files
-```
-npm run lint
-```
+## 技术栈：
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Vue 全家桶 + Axios + ElementUI
+
+后台使用的是 Binaryify 大佬的接口项目指路  [Binaryify/NeteaseCloudMusicApi ](https://github.com/Binaryify/NeteaseCloudMusicApi)
+
