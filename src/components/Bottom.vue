@@ -63,7 +63,7 @@ import AudioChen from "./AudioChen.vue";
 export default {
   data() {
     return {
-      defaultImg: require("@/assets/imgs/defaultImg.png"),
+      defaultImg: require("@/assets/imgs/defaultImg.jpg"),
       musicUrl: "",
       currentTime: 0,
     };

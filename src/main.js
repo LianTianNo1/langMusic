@@ -13,7 +13,7 @@ Vue.use(ElementUI);
 
 Vue.use(Vuelazyload, {
   preLoad: 1.3,
-  loading: require("./assets/imgs/loading.png"),
+  loading: require("./assets/imgs/loading.gif"),
   attempt: 2,
 });
 

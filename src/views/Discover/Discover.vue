@@ -251,8 +251,7 @@ ul {
   width: 18%;
   margin: 10px 0;
   position: relative;
-  /* overflow-y: hidden; */
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
 .list li .first-p {
@@ -291,9 +290,7 @@ ul {
 .list li:hover .first-p {
   transform: translateY(0);
 }
-.list li:hover img {
-  transform: scale(1.1);
-}
+
 .list li:hover::before {
   opacity: 1;
 }
@@ -301,7 +298,6 @@ ul {
 .songs-wrap ul img {
   width: 100%;
   border-radius: 5px;
-  transition: transform 0.4s ease-out;
   /* opacity: 1; */
 }
 

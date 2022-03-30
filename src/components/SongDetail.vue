@@ -195,6 +195,7 @@ ul {
   animation-name: showWindow;
   animation-fill-mode: forwards;
   animation-timing-function: ease-out;
+  z-index: 10;
 }
 .inner-bg {
   position: absolute;
