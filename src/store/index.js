@@ -1,17 +1,22 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
+import mutations from "./mutation";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
+    globalMusicUrl: "",
+    globalMusicInfo: {},
+    globalCurrentTime: 0,
+    isMusicPaused: true,
+    musicQueue: [],
+    nowIndex: 0,
+    deleteToNext: false,
+    queuePos: {},
+    queueStyle: "normal",
   },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+  mutations,
+});
+
+export default store;
