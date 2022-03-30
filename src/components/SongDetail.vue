@@ -55,9 +55,6 @@
           </div>
         </div>
       </div>
-      <!-- <ul style="display:flex">
-                <li v-for="(item,index) in colors" :key="index + Math.random()" :style="`backgroundColor:rgb(${item[0]},${item[1]},${item[2]})`">{{item}}</li>
-            </ul> -->
     </div>
   </transition>
 </template>
@@ -83,20 +80,11 @@ export default {
     close() {
       this.$parent.show = true;
     },
-    getColor() {
-      const img = this.$refs.cover;
-
-      img.addEventListener("load", () => {});
-    },
     getLyric(id) {
       lyricAPI({ id }).then((res) => {
-        console.log(res);
-
+        // console.log(res);
+        if (!res) return;
         const _this = this;
-        this.$nextTick(() => {
-          _this.getColor();
-        });
-
         if (!Object.hasOwnProperty.call(res.data, "lrc")) {
           _this.hasLyric = false;
         } else {
@@ -182,6 +170,7 @@ ul {
 .lyric-wrap .el-scrollbar__view {
   position: relative;
   padding: 100px 0 300px 0;
+  text-align: center;
 }
 
 .song-detail {
@@ -205,7 +194,7 @@ ul {
   left: 50%;
   z-index: 0;
   background-size: cover;
-  filter: blur(10px);
+  filter: blur(30px);
   transform: translate(-50%, -50%) scale(1.1);
 }
 @keyframes showWindow {
@@ -361,11 +350,13 @@ span.song-info {
   opacity: 0.28;
   cursor: default;
   border-radius: 12px;
-  text-shadow: 1px 1px #000000c9;
+  transition: transform 0.2s ease-out;
+  text-shadow: 1px 1px #ea3838c9, -1px -1px #e132f0c9;
+  filter: drop-shadow(0 2px 10px #ea3838c9);
 }
 
 .lyric-wrap p:hover {
-  background-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1) translate(0, -20%);
 }
 
 .active-lyric {

@@ -12,3 +12,6 @@ Vue 全家桶 + Axios + ElementUI
 
 后台使用的是 Binaryify 大佬的接口项目指路  [Binaryify/NeteaseCloudMusicApi ](https://github.com/Binaryify/NeteaseCloudMusicApi)
 
+## 在线预览
+[在线](http://120.25.249.159:3005/#/discover)
+

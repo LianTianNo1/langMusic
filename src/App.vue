@@ -74,7 +74,7 @@ export default {
   position: relative;
   top: 0;
   left: 0;
-  z-index: 99;
+  z-index: 9;
   right: 0;
   box-shadow: 0px 1px 5px #0000002b;
 }
@@ -85,6 +85,7 @@ export default {
   left: 0;
   right: 0;
   height: 70px;
+  z-index: 14;
   background-color: #ffffff6e;
   box-shadow: 0px -2px 2px rgb(145 145 145 / 12%);
 }

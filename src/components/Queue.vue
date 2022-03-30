@@ -42,17 +42,13 @@
                 </div>
 
                 <span class="queue-song-duration">{{ item.duration }}</span>
-                <span class="queue-song-delete" @click="deleteQueue(item.id)"
-                  >×</span
-                >
+                <span class="queue-song-delete" @click="deleteQueue(item.id)">×</span>
               </li>
             </el-scrollbar>
           </ul>
         </el-tab-pane>
       </el-tabs>
-      <span v-if="!musicQueue.length" class="queue-tip"
-        >什么都没有~快去听歌吧</span
-      >
+      <span v-if="!musicQueue.length" class="queue-tip">什么都没有~快去听歌吧</span>
     </div>
   </div>
 </template>
@@ -231,19 +227,21 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .queue {
   width: 25%;
   min-width: 300px;
-  height: 70%;
+  height: calc(70% + 70px);
   position: fixed;
   right: 10px;
-  bottom: 70px;
+  padding: 1rem;
+  bottom: 0px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   background-color: #ffffffeb;
   box-sizing: border-box;
   font-size: 14px;
+  z-index: 13;
   box-shadow: 0 0 11px rgb(0 0 0 / 31%);
 }
 

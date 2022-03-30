@@ -8,11 +8,7 @@
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane label="歌曲" name="first">
           <div class="songs-table">
-            <el-table
-              :data="songsList"
-              style="width: 100%"
-              @row-dblclick="play"
-            >
+            <el-table :data="songsList" style="width: 100%" @row-dblclick="play">
               <el-table-column type="index" width="50"></el-table-column>
 
               <el-table-column prop="songName" label="音乐标题" width="">
@@ -36,11 +32,7 @@
                   <div
                     v-for="(x, i) in scope.row.artistInfo"
                     :key="i + Math.random()"
-                    style="
-                      cursor: pointer;
-                      color: #2980b9;
-                      display: inline-block;
-                    "
+                    style="cursor: pointer; color: #2980b9; display: inline-block"
                     @click="toArtist(x.id)"
                   >
                     {{ x.name
@@ -72,11 +64,7 @@
                 </template>
               </el-table-column>
 
-              <el-table-column
-                prop="duration"
-                label="时长"
-                width="100"
-              ></el-table-column>
+              <el-table-column prop="duration" label="时长" width="100"></el-table-column>
             </el-table>
           </div>
         </el-tab-pane>
@@ -137,11 +125,7 @@
       </el-pagination>
     </div>
 
-    <div
-      class="add-ball iconfont icon-yinfu"
-      v-show="showAddBall"
-      ref="addBall"
-    ></div>
+    <div class="add-ball iconfont icon-yinfu" v-show="showAddBall" ref="addBall"></div>
   </div>
 </template>
 
@@ -437,7 +421,7 @@ ul {
 .result-top-info span {
   margin-left: 10px;
   font-size: 12px;
-  color: grey;
+  color: white;
 }
 
 .el-tabs__active-bar {
@@ -534,7 +518,7 @@ ul {
 }
 
 .list li::before {
-  content: '\e665';
+  content: "\e665";
   position: absolute;
   bottom: 25px;
   right: 5px;
@@ -602,7 +586,7 @@ ul {
 }
 
 .mv-img-wrap .play::before {
-  content: '\e665';
+  content: "\e665";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -651,7 +635,7 @@ ul {
 }
 
 .mv-info .author {
-  color: #a5a1a1;
+  color: white;
   font-size: 12px;
 }
 </style>

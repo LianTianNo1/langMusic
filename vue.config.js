@@ -1,6 +1,7 @@
-const { defineConfig } = require("@vue/cli-service");
 const CompressionPlugin = require("compression-webpack-plugin");
-module.exports = defineConfig({
+
+module.exports = {
+  // 选项...
   transpileDependencies: true,
   publicPath: "./",
   lintOnSave: false,
@@ -15,5 +16,8 @@ module.exports = defineConfig({
         deleteOriginalAssets: false, //是否删除原文件
       }),
     ],
+  }, //vue-cli3.0 里面的 vue.config.js做配置
+  devServer: {
+    proxy: "http://120.25.249.159:3006",
   },
-});
+};

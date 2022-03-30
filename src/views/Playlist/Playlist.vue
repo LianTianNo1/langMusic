@@ -356,18 +356,21 @@ export default {
       songInfoAPI({ ids: trackId }).then((res) => {
         console.log(res);
         const pushList = [];
-        for (const item of res.data.songs) {
-          const duration = item.dt;
-          const min = parseInt(duration / 60000)
-            .toString()
-            .padStart(2, "0");
-          const second = parseInt((duration - min * 60000) / 1000)
-            .toString()
-            .padStart(2, "0");
-          item.dt = `${min}:${second}`;
+        if (res && res.data) {
+          for (const item of res.data.songs) {
+            const duration = item.dt;
+            const min = parseInt(duration / 60000)
+              .toString()
+              .padStart(2, "0");
+            const second = parseInt((duration - min * 60000) / 1000)
+              .toString()
+              .padStart(2, "0");
+            item.dt = `${min}:${second}`;
 
-          pushList.push(item);
+            pushList.push(item);
+          }
         }
+
         // console.log(pushList)
 
         if (all) {

@@ -389,7 +389,7 @@ ul {
 }
 
 .mv-info .author {
-  color: #a5a1a1;
+  color: white;
   font-size: 12px;
 }
 

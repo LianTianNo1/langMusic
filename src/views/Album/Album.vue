@@ -260,24 +260,26 @@ export default {
       albumAPI({ id: this.albumId })
         .then((res) => {
           console.log(res);
-          this.albumInfo = res.data.album;
-          this.commentCount = this.albumInfo.info.commentCount;
-          this.artistName = res.data.album.artist.name;
-          this.albumInfo.publishTime = formatDate(new Date(this.albumInfo.publishTime));
-          for (const item of res.data.songs) {
-            const duration = item.dt;
-            const min = parseInt(duration / 60000)
-              .toString()
-              .padStart(2, "0");
-            const second = parseInt((duration - min * 60000) / 1000)
-              .toString()
-              .padStart(2, "0");
-            item.dt = `${min}:${second}`;
-          }
-          this.tableData = res.data.songs;
+          if (res && res.dadta) {
+            this.albumInfo = res.data.album;
+            this.commentCount = this.albumInfo.info.commentCount;
+            this.artistName = res.data.album.artist.name;
+            this.albumInfo.publishTime = formatDate(new Date(this.albumInfo.publishTime));
+            for (const item of res.data.songs) {
+              const duration = item.dt;
+              const min = parseInt(duration / 60000)
+                .toString()
+                .padStart(2, "0");
+              const second = parseInt((duration - min * 60000) / 1000)
+                .toString()
+                .padStart(2, "0");
+              item.dt = `${min}:${second}`;
+            }
+            this.tableData = res.data.songs;
 
-          const albumDesc = this.albumInfo.description;
-          this.albumDescList = albumDesc.split(/[\n]/);
+            const albumDesc = this.albumInfo.description;
+            this.albumDescList = albumDesc.split(/[\n]/);
+          }
         })
         .then(() => {
           this.loading = false;
