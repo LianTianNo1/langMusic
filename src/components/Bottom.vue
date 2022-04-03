@@ -110,8 +110,16 @@ export default {
       }
     },
     toSongDetail() {
-      if (this.globalMusicUrl) this.$parent.show = !this.$parent.show;
-      else
+      console.log(111);
+      if (this.globalMusicUrl) {
+        // console.log(
+        //   "this.$refs.globalBg ",
+        //   this.$parent.$refs.globalBg,
+        //   this.globalMusicInfo.imgUrl
+        // );
+        this.$parent.$refs.globalBg.style.backgroundImage = `url(${this.globalMusicInfo.imgUrl}`;
+        this.$parent.show = !this.$parent.show;
+      } else
         this.$message({
           showClose: true,
           message: "还没有播放音乐哦",

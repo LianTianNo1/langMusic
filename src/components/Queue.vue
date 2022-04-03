@@ -164,6 +164,10 @@ export default {
           this.$store.commit("changeMusicInfo", musicInfo);
           this.$store.commit("changeMusicStatus", false);
 
+          document.querySelector(
+            ".globalBg"
+          ).style.backgroundImage = `url(${musicInfo.imgUrl})`;
+
           const ids = [];
           for (const item of this.musicQueue) {
             ids.push(item.id);

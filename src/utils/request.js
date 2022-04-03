@@ -4,7 +4,8 @@ import { Message } from "element-ui";
 let baseURL = "";
 
 if (process.env.NODE_ENV == "development") {
-  baseURL = "http://localhost:3006";
+  // baseURL = "http://localhost:3006";
+  baseURL = "http://120.25.249.159:3006";
 } else {
   baseURL = "http://120.25.249.159:3006";
 }

@@ -251,6 +251,10 @@ export default {
             duration: row.duration,
           };
 
+          document.querySelector(
+            ".globalBg"
+          ).style.backgroundImage = `url(${musicInfo.imgUrl})`;
+
           this.$store.commit("changeMusicUrl", this.songUrl);
           this.$store.commit("changeMusicInfo", musicInfo);
           this.$store.commit("changeMusicStatus", false);

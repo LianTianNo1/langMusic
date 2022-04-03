@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div class="globalBg" ref="globalBg"></div>
     <Top></Top>
     <Index>
       <keep-alive>
@@ -54,7 +55,7 @@ export default {
   overflow-y: auto;
   overflow-x: hidden;
 }
-#app::before {
+.globalBg {
   position: absolute;
   content: "";
   display: block;
@@ -64,9 +65,10 @@ export default {
   height: 100%;
   background: url(./assets/imgs/bg.jpg);
   background-size: cover;
-  filter: blur(10px);
+  filter: blur(20px);
   transform: scale(1.1);
   top: 0%;
+  transition: all 1s;
 }
 
 .header {
